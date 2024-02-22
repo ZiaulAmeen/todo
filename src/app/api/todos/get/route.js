@@ -24,7 +24,7 @@ export async function POST(req) {
     // MYSQL //
     const users = await query({
       query:
-        "SELECT * FROM todos INNER JOIN users ON todos.user_id = users.user_id WHERE users.user_id = ?",
+        "SELECT todo, completed, id FROM todos INNER JOIN users ON todos.user_id = users.user_id WHERE users.user_id = ?",
       values: [user_id],
     });
 
