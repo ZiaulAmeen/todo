@@ -6,6 +6,7 @@ import TodoInput from "@/components/todopage/todoInput";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodo } from "../redux/features/todoSlice";
+import { useRouter } from "next/navigation";
 
 const homepage = () => {
   const [load, setLoad] = useState(false);
@@ -13,6 +14,7 @@ const homepage = () => {
   const [editId, setEditId] = useState("");
   const [editingId, setEditingId] = useState("");
   const dispatch = useDispatch();
+  const router = useRouter()
   // const [todos, setTodos] = useState([]);
 
   // async function fetchData() {
@@ -43,6 +45,9 @@ const homepage = () => {
   const user_id = useSelector((state) => state.localStorage.user_id);
 
   useEffect(() => {
+    if(user_id === ''){
+      router.push('/')
+    }
     // redux thunk
     dispatch(fetchTodo(user_id));
   }, [load]);
