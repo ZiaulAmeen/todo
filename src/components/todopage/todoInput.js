@@ -14,7 +14,7 @@ const todoInput = ({
   edit,
   editId,
   todos,
-  editingId,
+  editingId, 
 }) => {
   const [addTodo, setAddTodo] = useState("");
 
